@@ -1,22 +1,24 @@
 <template>
 <div class="register-container">
   <el-container>
-    <el-form :model="registerForm">
-      <el-form-item>
-        <h3 class="title">register Form</h3>
-      </el-form-item>
-      <el-form-item label="用户名">
-        <el-input v-model="registerForm.username"></el-input>
-      </el-form-item>
-      <el-form-item label="密码">
-        <el-input v-model="registerForm.password"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button @click.native.prevent="handleRegister">
-          注册
-        </el-button>
-      </el-form-item>
-    </el-form>
+    <el-main>
+      <el-form :model="registerForm" label-width="80px">
+        <el-form-item>
+          <h3 class="title">Register Form</h3>
+        </el-form-item>
+        <el-form-item label="用户名">
+          <el-input v-model="registerForm.username"></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="registerForm.password"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click.native.prevent="handleRegister" id="registerBtn">
+            注册
+          </el-button>
+        </el-form-item>
+      </el-form>
+    </el-main>
   </el-container>
 </div>
   
@@ -44,5 +46,14 @@ export default {
 </script>
 
 <style>
-
+.register-container{
+  width: 500px;
+  margin: 0px auto;
+}
+.title{
+  text-align: center;
+}
+#registerBtn{
+  width: 100%;
+}
 </style>
