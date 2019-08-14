@@ -8,6 +8,11 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(
+    config => {
+        // do something before request is sent
+        return config
+    },
+
     error => {
         // do something with request error
         console.log(error) // for debug
@@ -17,11 +22,11 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     response => {
         const res = response.data
-        if(res.code === 200) {
-            return res;
+        if(res.status === 200) {
+            return res
         }
         Message({
-            message: res.message || 'Error',
+            message: res.msg || 'Error',
             type: 'error',
             duration: 3000
         })
