@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { Message } from 'element-ui';
 
 export default {
   name: 'Register',
@@ -39,6 +40,16 @@ export default {
   methods: {
     handleRegister() {
       this.$store.dispatch('user/register', this.registerForm)
+      .then(() => {
+         Message({
+            message: 'success',
+            type: 'success',
+            duration: 3000
+        })
+        this.$router.push('/login')
+      })
+      .catch(() => {
+      })
     }
   }
 }

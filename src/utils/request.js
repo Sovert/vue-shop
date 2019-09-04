@@ -15,13 +15,13 @@ service.interceptors.request.use(
 
     error => {
         // do something with request error
-        console.log(error) // for debug
         return Promise.reject(error)
     }
 )
 service.interceptors.response.use(
     response => {
         const res = response.data
+       
         if(res.status === 200) {
             return res
         }
@@ -30,7 +30,17 @@ service.interceptors.response.use(
             type: 'error',
             duration: 3000
         })
-    }
+        return Promise.reject(new Error(res.msg || 'Error'))
+    },
+    error => {
+        console.log('err' + error)// for debug
+        Message({
+          message: error.message,
+          type: 'error',
+          duration: 3 * 1000
+        })
+        return Promise.reject(error)
+      }
     
 )
 export default service

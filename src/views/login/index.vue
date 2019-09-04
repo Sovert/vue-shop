@@ -13,7 +13,7 @@
           <el-input v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button>
+          <el-button id="loginBtn" @click.native.prevent="handleLogin">
             提交
           </el-button>
         </el-form-item>
@@ -35,11 +35,31 @@ export default {
         password: '2'
       }
     }
+  },
+  methods: {
+    handleLogin() {
+      this.$store.dispatch('user/login', this.loginForm)
+      .then(() => {
+       // this.$router.push('/login')
+      })
+      .catch(() => {
+      })
+    }
   }
 }
 
 </script>
 
 <style>
-
+.login-container{
+  width: 500px;
+  margin: 0px auto;
+}
+.title{
+  text-align: center;
+}
+#loginBtn{
+  width: 100%;
+}
 </style>
+
