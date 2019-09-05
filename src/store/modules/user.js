@@ -1,10 +1,10 @@
-import user from '@/api/user' 
+import {login, register} from '@/api/user' 
 
 const actions = {
     register({ commit }, userInfo) {
         const { username, password } = userInfo
         return new Promise((resolve, reject) => {
-            user.register({username: username.trim(), password: password}).then(response => {
+            register({username: username.trim(), password: password}).then(response => {
                 resolve()
             }).catch(error => {
                 reject(error)
@@ -15,7 +15,7 @@ const actions = {
     login({ commit }, userInfo) {
         const { username, password } = userInfo
         return new Promise((resolve, reject) => {
-            user.login({username: username.trim(), password: password}).then(response => {
+            login({username: username.trim(), password: password}).then(response => {
                 resolve()
             }).catch(error => {
                 reject(error)
