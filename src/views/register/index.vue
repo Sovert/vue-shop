@@ -4,7 +4,7 @@
     <el-main>
       <el-form :model="registerForm" label-width="80px">
         <el-form-item>
-          <h3 class="title">Register Form</h3>
+          <h3 class="title">注册</h3>
         </el-form-item>
         <el-form-item label="用户名">
           <el-input v-model="registerForm.username"></el-input>
@@ -14,7 +14,7 @@
         </el-form-item>
         <el-form-item>
           <el-button @click.native.prevent="handleRegister" id="registerBtn">
-            注册
+            提交
           </el-button>
         </el-form-item>
       </el-form>
@@ -42,7 +42,7 @@ export default {
       this.$store.dispatch('user/register', this.registerForm)
       .then(() => {
          Message({
-            message: 'success',
+            message: '注册成功',
             type: 'success',
             duration: 3000
         })

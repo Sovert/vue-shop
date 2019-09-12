@@ -2,9 +2,9 @@
 <div class="login-container">
   <el-container>
     <el-main>
-      <el-form :model="loginForm">
+      <el-form :model="loginForm" label-width="80px">
         <el-form-item>
-          <h3 class="title">Login Form</h3>
+          <h3 class="title">登录</h3>
         </el-form-item>
         <el-form-item label="用户名">
           <el-input v-model="loginForm.username"></el-input>
@@ -25,14 +25,13 @@
 </template>
 
 <script>
+import { Message } from 'element-ui';
 
 export default {
   name: 'Login',
   data() {
     return {
       loginForm: {
-        username: '1',
-        password: '2'
       }
     }
   },
@@ -40,7 +39,12 @@ export default {
     handleLogin() {
       this.$store.dispatch('user/login', this.loginForm)
       .then(() => {
-       // this.$router.push('/login')
+         Message({
+            message: '登录成功',
+            type: 'success',
+            duration: 3000
+        })
+        this.$router.push({path: '/'})
       })
       .catch(() => {
       })
