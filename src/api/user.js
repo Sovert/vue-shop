@@ -15,3 +15,10 @@ export function login(data) {
         data
     })
 }
+
+export function getInfo() {
+    return request({
+        url: '/user/info',
+        method: 'post'
+    })
+}
